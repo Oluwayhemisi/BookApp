@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book On Site</title>
+</head>
+<body>
+        <ul>
+        {% for book in books %}
+            <li><a href="{% url 'third_app:book-detail' book.pk %}">{{ book.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
