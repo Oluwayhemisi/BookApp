@@ -21,5 +21,5 @@ class BookSerializer(serializers.ModelSerializer):  # noqa
     class Meta:
         model = Book
         fields = "__all__"
-        fields = ['title', 'description', 'date_published' 'isbn', 'price', 'publisher']
+        fields = ['title', 'description', 'date_published', 'isbn', 'price', 'publisher']
         # exclude =[]
