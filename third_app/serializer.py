@@ -12,11 +12,11 @@ class PublisherSerializer(serializers.ModelSerializer):
 class BookSerializer(serializers.ModelSerializer):  # noqa
     # book_title = serializers.CharField(max_length=255, source='title')
     # publisher = PublisherSerializer()
-    publisher = serializers.HyperlinkedRelatedField(
-        queryset=Publisher.objects.all(),
-        view_name='third_app:publisher-detail'
+#    publisher = serializers.HyperlinkedRelatedField(
+#        queryset=Publisher.objects.all(),
+ #       view_name='third_app:publisher-detail'
 
-    )
+    #)
 
     class Meta:
         model = Book
