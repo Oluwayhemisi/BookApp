@@ -2,11 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import path, reverse
 from django.db import connection
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-
+from rest_framework.filters import SearchFilter,OrderingFilter
+from .filter import BookFilter
+from .pagination import BookPagination
 from .serializer import BookSerializer, PublisherSerializer
 from rest_framework import status, request
 from rest_framework.views import APIView
@@ -63,7 +66,11 @@ from third_app.models import Book, Publisher
 #
 
 
-
 class BookViewSet(ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_class = BookFilter
+    search_fields = ['price']
+    ordering_fields  = ['title', 'price']
+    pagination_class = BookPagination
