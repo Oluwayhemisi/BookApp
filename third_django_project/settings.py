@@ -14,6 +14,8 @@ from pathlib import Path
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import rest_framework.pagination
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -41,7 +43,8 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "debug_toolbar",
-    "rest_framework"
+    "rest_framework",
+    "django_filters"
 ]
 LOCAL_APPS = [
     'third_app.apps.ThirdAppConfig'
@@ -63,6 +66,10 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}
 
 ROOT_URLCONF = 'third_django_project.urls'
 
@@ -137,3 +144,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ADMIN_URL = "admin/"
+AUTH_USER_MODEL = 'third_app.User'
