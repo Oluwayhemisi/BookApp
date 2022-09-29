@@ -1,8 +1,23 @@
 from django.contrib import admin
-from .models import Book, Publisher
+from django.contrib.auth.admin import UserAdmin as AdminUser
+
+from .models import Book, Publisher, User
 
 
 # Register your models here.
+@admin.register(User)
+class UserAdmin(AdminUser):
+    add_fieldsets = (
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("email", "username", "password1", "password2"),
+
+            },
+        ),
+    )
+
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
