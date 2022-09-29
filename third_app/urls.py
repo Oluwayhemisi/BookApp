@@ -1,12 +1,13 @@
 from django.urls import path, include
-from rest_framework.routers import SimpleRouter
+from rest_framework.routers import SimpleRouter, DefaultRouter
 
 from . import views
 
 
 app_name = 'third_app'
 
-router = SimpleRouter()
+# router = SimpleRouter()
+router = DefaultRouter()
 router.register('books', views.BookViewSet)
 urlpatterns = [
     # path('index/', views.index, name='index'),
